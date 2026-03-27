@@ -1,21 +1,28 @@
 [project]
-name = "react"
+name = "ReAct"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "accelerate>=1.13.0",
     "flash-attn",
+    "flashinfer-python>=0.6.6",
+    "gymnasium>=1.2.3",
+    "httpx[socks]>=0.28.1",
     "ipykernel>=7.2.0",
-    "langchain>=1.2.11",
-    "mistral-common>=1.9.1",
-    "mistral-inference>=1.6.0",
+    "langchain-community>=0.4.1",
+    "math-verify>=0.9.0",
     "nvitop>=1.6.2",
-    "rank-bm25>=0.2.2",
-    "torch==2.5",
-    "tqdm>=4.67.3",
-    "transformers>=5.3.0",
+    "openai>=2.29.0",
+    "peft>=0.18.1",
+    "requests>=2.32.5",
+    "setuptools>=82.0.1",
+    "tokenizers==0.22.2",
+    "torch==2.6",
+    "transformers==4.57.3",
+    "trl>=0.29.0",
+    "vllm==0.8.5.post1",
+    "wikipedia>=1.4.0",
 ]
 
 [[tool.uv.index]]
@@ -23,4 +30,4 @@ url = "https://pypi.tuna.tsinghua.edu.cn/simple"
 default = true
 
 [tool.uv.sources]
-flash-attn = { url = "https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.3/flash_attn-2.7.3+cu12torch2.5cxx11abiFALSE-cp310-cp310-linux_x86_64.whl" }
+flash-attn = { url = "https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.3/flash_attn-2.7.3+cu12torch2.6cxx11abiFALSE-cp310-cp310-linux_x86_64.whl" }
