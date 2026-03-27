@@ -1,6 +1,6 @@
 import json
 import os
-import gym
+import gymnasium as gym
 import numpy as np
 import re
 import string
@@ -12,7 +12,11 @@ HOTPOTQA_SPLIT_FILE = {
   "train": "hotpot_train_v1.1_simplified.json",
   "dev": "hotpot_dev_v1_simplified.json",
   "test": "hotpot_test_v1_simplified.json",
+  'hpqa_500': "hpqa_500.json",
+  'msqa_500': "msqa_500.json",
+  '2wmhqa_500': "2wmhqa_500.json",
 }
+
 
 FEVER_SPLIT_FILE = {
   "train": "train.jsonl",
@@ -85,6 +89,9 @@ class HotPotQAWrapper(gym.Wrapper):
     self.data = [(d['question'], d['answer']) for d in self.data]
     self.data_idx = 0
     self.split = split
+    # i add it below it is weird. i reproduct the repo first time i didnt use these 2 variables and it is weird to have them in the middle of the code.
+    self.steps = 0
+    self.answer = None
 
   def reset(self, seed=None, return_info=False, options=None, idx=None):
     self.env.reset(seed=seed, return_info=return_info, options=options)

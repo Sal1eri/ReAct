@@ -4266,6 +4266,7 @@ name = "react"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "beautifulsoup4" },
     { name = "flash-attn", marker = "python_full_version < '3.11'" },
     { name = "flashinfer-python" },
     { name = "gymnasium" },
@@ -4288,6 +4289,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
+    { name = "beautifulsoup4", specifier = ">=4.14.3" },
     { name = "flash-attn", url = "https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.3/flash_attn-2.7.3+cu12torch2.6cxx11abiFALSE-cp310-cp310-linux_x86_64.whl" },
     { name = "flashinfer-python", specifier = ">=0.6.6" },
     { name = "gymnasium", specifier = ">=1.2.3" },

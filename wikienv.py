@@ -1,7 +1,7 @@
 import ast
 import json
 import time
-import gym
+import gymnasium as gym
 import requests
 from bs4 import BeautifulSoup
 
@@ -99,7 +99,8 @@ class WikiEnv(gym.Env):
     entity_ = entity.replace(" ", "+")
     search_url = f"https://en.wikipedia.org/w/index.php?search={entity_}"
     old_time = time.time()
-    response_text = requests.get(search_url).text
+    response_text = requests.get(search_url,
+                                 headers={"User-Agent": "Mozilla/5.0"}).text
     self.search_time += time.time() - old_time
     self.num_searches += 1
     soup = BeautifulSoup(response_text, features="html.parser")
