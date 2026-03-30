@@ -65,7 +65,9 @@ Thought 2: Pavel Urysohn is a mathematician. I need to search Leonid Levin next 
 Action 2: Search[Leonid Levin]
 Observation 2: Leonid Anatolievich Levin is a Soviet-American mathematician and computer scientist. 
 Thought 3: Leonid Levin is a mathematician and computer scientist. So Pavel Urysohn and Leonid Levin have the same type of work. 
-Action 3: Finish[yes]"""
+Action 3: Finish[yes]
+
+"""
 
 REFLECTIONS = """
 Previous Trial:

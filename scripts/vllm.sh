@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export CUDA_VISIBLE_DEVICES=3
+export CUDA_VISIBLE_DEVICES=1
 
 MODEL_NAME="meta-llama/Llama-3.1-8B-Instruct"
 PORT=8000

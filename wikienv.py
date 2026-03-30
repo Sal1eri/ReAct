@@ -4,9 +4,16 @@ import time
 import gymnasium as gym
 import requests
 from bs4 import BeautifulSoup
+import re
+
+proxies = {
+    "http": "http://127.0.0.1:7890",
+    "https": "http://127.0.0.1:7890",
+}
+
 
 # import wikipedia
-
+PATTERN_FINISH = re.compile(r"finish\[(.+)\]")
 def clean_str(p):
   return p.encode().decode("unicode-escape").encode("latin1").decode("utf-8")
 
@@ -100,7 +107,8 @@ class WikiEnv(gym.Env):
     search_url = f"https://en.wikipedia.org/w/index.php?search={entity_}"
     old_time = time.time()
     response_text = requests.get(search_url,
-                                 headers={"User-Agent": "Mozilla/5.0"}).text
+                                 headers={"User-Agent": "Mozilla/5.0"},
+                                 proxies=proxies).text
     self.search_time += time.time() - old_time
     self.num_searches += 1
     soup = BeautifulSoup(response_text, features="html.parser")
@@ -147,12 +155,18 @@ class WikiEnv(gym.Env):
         self.obs = f"(Result {self.lookup_cnt + 1} / {len(self.lookup_list)}) " + self.lookup_list[self.lookup_cnt]
         self.lookup_cnt += 1
     elif action.startswith("finish[") and action.endswith("]"):
+      
       answer = action[len("finish["):-1]
       self.answer = answer
       done = True
       self.obs = f"Episode finished, reward = {reward}\n"
     elif action.startswith("think[") and action.endswith("]"):
       self.obs = "Nice thought."
+    elif PATTERN_FINISH.match(action):
+      answer = PATTERN_FINISH.match(action).group(1)
+      self.answer = answer
+      done = True
+      self.obs = f"Episode finished, reward = {reward}\n"
     else:
       self.obs = "Invalid action: {}".format(action)
 
