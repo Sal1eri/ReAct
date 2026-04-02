@@ -1,0 +1,11 @@
+CUDA_VISIBLE_DEVICES=0 vllm serve mistralai/Mistral-7B-Instruct-v0.3 \
+  --tokenizer-mode mistral \
+  --config-format mistral \
+  --load-format mistral \
+  --host 0.0.0.0 \
+  --port 8001 \
+  --dtype auto \
+  --gpu-memory-utilization 0.9 \
+  --max-model-len 16384 \
+  --tensor-parallel-size 1 \
+  --trust-remote-code

@@ -12,11 +12,11 @@ from fewshots import WEBTHINK_SIMPLE6
 
 
 client = OpenAI(
-    base_url="http://127.0.0.1:8001/v1",
+    base_url="http://127.0.0.1:8000/v1",
     api_key="EMPTY",
 )
 
-model = "mistralai/Mistral-7B-Instruct-v0.3"
+model = 'Qwen/Qwen3-8B'
 save_path = model.split("/")[-1]
 os.makedirs(save_path, exist_ok=True)
 
@@ -211,7 +211,9 @@ def run_split(split, sample_count=500):
 
 
 def main():
-    splits = ["hpqa_500", "2wmhqa_500", "msqa_500"]
+    splits = [
+        # "hpqa_500", 
+        "2wmhqa_500", "msqa_500"]
     all_results = []
 
     summary_log_path = os.path.join(save_path, "summary.log")

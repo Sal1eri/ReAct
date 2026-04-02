@@ -14,9 +14,15 @@ proxies = {
 
 # import wikipedia
 PATTERN_FINISH = re.compile(r"finish\[(.+)\]")
-def clean_str(p):
-  return p.encode().decode("unicode-escape").encode("latin1").decode("utf-8")
 
+
+def clean_str(p):
+    if p is None:
+        return ""
+    # 确保是字符串
+    p = str(p)
+    p = p.replace('\\', '/') 
+    return p.encode("utf-8", errors="ignore").decode("utf-8", errors="ignore")
 
 class textSpace(gym.spaces.Space):
   def contains(self, x) -> bool:
@@ -108,7 +114,8 @@ class WikiEnv(gym.Env):
     old_time = time.time()
     response_text = requests.get(search_url,
                                  headers={"User-Agent": "Mozilla/5.0"},
-                                 proxies=proxies).text
+                                #  proxies=proxies
+                                 ).text
     self.search_time += time.time() - old_time
     self.num_searches += 1
     soup = BeautifulSoup(response_text, features="html.parser")

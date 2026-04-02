@@ -10,11 +10,12 @@ def search(query: str) :
     to provide comprehensive, accurate, and trusted results. It's particularly useful
     for answering questions about current events.
     """
-    wikipedia = WikipediaQueryRun(api_wrapper=WikipediaAPIWrapper(lang="en"))
+    wikipedia = WikipediaQueryRun(api_wrapper=WikipediaAPIWrapper())
     search_res = wikipedia.run(query)
+
+    print(f"Search results for query: '{query}'\n{search_res}")
     return search_res
 
-
-print(search("What is the capital of France?"))
+search("Openai")
 
 
