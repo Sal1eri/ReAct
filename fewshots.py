@@ -1,4 +1,3 @@
-# Modify to Modern Agent
 
 WEBTHINK_SIMPLE6 = """Question: What is the elevation range for the area that the eastern sector of the Colorado orogeny extends into?
 Thought 1: I need to search Colorado orogeny, find the area that the eastern sector of the Colorado orogeny extends into, then find the elevation range of the area.

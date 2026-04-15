@@ -2,7 +2,7 @@
 
 # 设置默认值
 MODEL_KEY="llama"
-GPU_ID="1"
+GPU_ID="0"
 PORT=8000
 
 # 解析长参数
