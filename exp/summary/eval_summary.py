@@ -12,7 +12,7 @@ def find_root():
 
 
 PROJ_ROOT = find_root()
-DATA_DIR = PROJ_ROOT / "data"
+DATA_DIR = PROJ_ROOT / "data" /'mydata'
 RESULT_DIR = PROJ_ROOT / "results" / "summary"
 RESULT_DIR.mkdir(exist_ok=True, parents=True)
 
@@ -62,7 +62,7 @@ def clean_pred(ans: str):
     return ans
 
 def load_data(data_name):
-    data_name = f"{data_name}"+"_500.json"
+    data_name = f"{data_name}"+"_with_summary.json"
     with open(DATA_DIR / data_name, "r") as f:
         data = json.load(f)
     return data
@@ -102,7 +102,8 @@ def run_eval_one_benchmark(benchmark, max_samples=None):
     for idx, item in enumerate(tqdm(data, desc=f"Evaluating {benchmark}")):
         question = item["question"]
         gold_answer = item["answer"]
-        context = item["context"]
+        # context = item["context"]
+        context = item["summary"]
 
         message = build_message(question, context)
 
