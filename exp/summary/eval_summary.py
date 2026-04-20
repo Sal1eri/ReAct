@@ -32,7 +32,7 @@ MESSAGE_TEMPLATE = [
     },
     {
         "role": "user",
-        "content": "here is the question: {question},the context: {context}. Please give a concise answer to the question based on the context. Output only the final answer, in a few words, as short as possible. No explanations. Do not output anything else."
+        "content": "Question: {question}\nContext: {context}\nAnswer:"
 
     }
 ]
@@ -82,8 +82,6 @@ def llm(message):
             "chat_template_kwargs": {"enable_thinking": False}
         }
     )
-
-
     return response.choices[0].message.content.strip()
 
 
